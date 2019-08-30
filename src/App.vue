@@ -1,50 +1,67 @@
 <template>
-    <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link>
-            |
-            <router-link to="/about">About</router-link>
-        </div>
-        <router-view/>
-    </div>
+  <VResponsive>
+    <VApp>
+        <VNavigationDrawer v-model="drawer" app>
+          <VList dense>
+            <VListItem @click="">
+              <VListItemAction>
+                <VIcon>mdi-home</VIcon>
+                <VIcon>mdi-account</VIcon>
+                <VIcon>mdi-account-switch</VIcon>
+              </VListItemAction>
+              <VListItemContent>
+                <VListItemTitle>Home</VListItemTitle>
+              </VListItemContent>
+            </VListItem>
+            <VListItem @click="">
+              <VListItemAction>
+                <VIcon>mdi-contact-mail</VIcon>
+              </VListItemAction>
+              <VListItemContent>
+                <VListItemTitle>Contact</VListItemTitle>
+              </VListItemContent>
+            </VListItem>
+          </VList>
+        </VNavigationDrawer>
+
+      <VAppBar app :color="orange" dark>
+        <VAppBarNavIcon @click.stop="drawer = !drawer"></VAppBarNavIcon>
+        <VToolbarTitle>Application</VToolbarTitle>
+      </VAppBar>
+
+      <VContent>
+        <VContainer>
+          <v-row>
+            <v-col>Lorem ipsum dolor.</v-col>
+            <v-col>Lorem ipsum dolor.</v-col>
+            <v-col>Lorem ipsum dolor.</v-col>
+          </v-row>
+        </VContainer>
+      </VContent>
+
+
+    </VApp>
+  </VResponsive>
 </template>
 
-<style lang="scss">
+<script lang="ts">
+import Vue from 'vue';
+import HelloWorld from './components/HelloWorld.vue';
+import colors from 'vuetify/lib/util/colors';
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
+export default Vue.extend({
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
+  name: 'App',
 
-    a {
-        color: #42b983;
-    }
+  components: {
+    HelloWorld,
+  },
 
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }
+  data: () => ({
+    drawer: true,
+    grey: colors.grey.base,
+    orange: colors.orange.accent4,
+  }),
 
-    #nav {
-        padding: 30px;
-
-        a {
-            font-weight: bold;
-            color: #2c3e50;
-
-            &.router-link-exact-active {
-                color: #42b983;
-            }
-        }
-    }
-
-
-</style>
+});
+</script>

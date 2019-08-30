@@ -20,6 +20,10 @@
     "no-console": [false],
     "space-within-parens": 1,
     "space-before-function-paren": true,
-    "import-spacing": true
+    "import-spacing": true,
+    "no-undef": false,
+    "no-unused-vars": false,
+    "no-redeclare": false,
+    "no-irregular-whitespace": false
   }
 }
